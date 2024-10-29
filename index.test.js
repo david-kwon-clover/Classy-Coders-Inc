@@ -39,7 +39,7 @@ describe("Manager tests", () => {
     })
 
     test("Can update a Managers department", () => {
-        jenna.setEmployeesManaged(preston);
+        jenna.addEmployeeManaged(preston);
         expect(jenna.getEmployeesManaged()).toEqual([preston]);
     })
 })
