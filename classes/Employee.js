@@ -34,6 +34,11 @@ class Employee {
         }
     }
 
+    promote(promotedPosition) {
+        this.position = promotedPosition;
+        this.setSalary(this.getSalary() * 1.2);
+    }
+
     static getEmployees() {
         return Employee.#allEmployees;
     }

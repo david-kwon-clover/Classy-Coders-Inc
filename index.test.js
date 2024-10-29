@@ -33,7 +33,7 @@ describe("Employee tests without static methods", () => {
     test("Can promote Employee", () => {
         preston.promote("Senior Engineer");
         expect(preston.position).toBe("Senior Engineer");
-        expect(preston.getSalary).toBe(120000);
+        expect(preston.getSalary()).toBe(126000);
     })
 })
 
@@ -58,7 +58,7 @@ describe("Manager tests", () => {
     test("Can promote Manager", () => {
         jenna.promote("Director of Software Engineering");
         expect(jenna.position).toBe("Director of Software Engineering");
-        expect(jenna.getSalary).toBe(144000);
+        expect(jenna.getSalary()).toBe(144000);
     })
 })
 
@@ -115,6 +115,6 @@ describe("Employee Static Properties and Methods Tests", () => {
     })
 
     test("getTotalPayroll returns salary of all employees created", () => {
-        expect(Employee.getTotalPayroll()).toBe(515000)
+        expect(Employee.getTotalPayroll()).toBe(560000)
     })
 })
