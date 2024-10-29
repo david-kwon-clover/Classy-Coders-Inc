@@ -15,6 +15,12 @@ describe("Employee tests without static methods", () => {
         expect(preston.getSalary()).toBe(105000)
     })
 
+    test("Can handle errors for setting negative salary", () => {
+        expect(() => {
+            preston.setSalary(-1000)
+        }).toThrow("Salary cannot be negative");
+    })
+
     test("Can get current isHired status", () => {
         expect(preston.getStatus()).toBe(true);
     })
@@ -23,24 +29,36 @@ describe("Employee tests without static methods", () => {
         preston.setStatus("fire");
         expect(preston.getStatus()).toBe(false);
     })
+
+    test("Can promote Employee", () => {
+        preston.promote("Senior Engineer");
+        expect(preston.position).toBe("Senior Engineer");
+        expect(preston.getSalary()).toBe(126000);
+    })
 })
 
 describe("Manager tests", () => {
     const preston = new Employee("Preston", "Engineer", 100000);
     const jenna = new Manager("Jenna", "Head of Engineers", 120000, "Software Engineering", 10);
-
+    
     test("Can create instance of Manager that is a subclass of Employee", () => {
         expect(jenna instanceof Manager).toBe(true);
         expect(jenna instanceof Employee).toBe(true);
     })
-
+    
     test("Can get the managers department", () => {
         expect(jenna.getEmployeesManaged()).toEqual([]);
     })
-
+    
     test("Can update a Managers department", () => {
         jenna.addEmployeeManaged(preston);
         expect(jenna.getEmployeesManaged()).toEqual([preston]);
+    })
+
+    test("Can promote Manager", () => {
+        jenna.promote("Director of Software Engineering");
+        expect(jenna.position).toBe("Director of Software Engineering");
+        expect(jenna.getSalary()).toBe(144000);
     })
 })
 
@@ -79,6 +97,16 @@ describe("SalesPerson Tests", () => {
         malik.makeSale(20000);
         expect(malik.getSalesNumbers()).toBe(30500);
     })
+
+    test("Can find client with findClient", () => {
+        expect(malik.findClient("Vine")).toBe("Vine");
+    })
+
+    test("Can handle error if client cannot be found with findClient", () => {
+        expect(() => {
+            malik.findClient("Spotify")
+        }).toThrow("Client not found");
+    })
 })
 
 describe("Employee Static Properties and Methods Tests", () => {
@@ -87,6 +115,6 @@ describe("Employee Static Properties and Methods Tests", () => {
     })
 
     test("getTotalPayroll returns salary of all employees created", () => {
-        expect(Employee.getTotalPayroll()).toBe(515000)
+        expect(Employee.getTotalPayroll()).toBe(560000)
     })
 })

@@ -17,6 +17,11 @@ class Manager extends Employee {
     addEmployeeManaged(employee) {
         this.#employeesManaged.push(employee);
     }
+
+    promote(promotedPosition) {
+        this.position = promotedPosition;
+        this.setSalary(this.getSalary() * 1.2);
+    }
 }
 
 module.exports = {
