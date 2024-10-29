@@ -29,24 +29,36 @@ describe("Employee tests without static methods", () => {
         preston.setStatus("fire");
         expect(preston.getStatus()).toBe(false);
     })
+
+    test("Can promote Employee", () => {
+        preston.promote("Senior Engineer");
+        expect(preston.position).toBe("Senior Engineer");
+        expect(preston.getSalary).toBe(120000);
+    })
 })
 
 describe("Manager tests", () => {
     const preston = new Employee("Preston", "Engineer", 100000);
     const jenna = new Manager("Jenna", "Head of Engineers", 120000, "Software Engineering", 10);
-
+    
     test("Can create instance of Manager that is a subclass of Employee", () => {
         expect(jenna instanceof Manager).toBe(true);
         expect(jenna instanceof Employee).toBe(true);
     })
-
+    
     test("Can get the managers department", () => {
         expect(jenna.getEmployeesManaged()).toEqual([]);
     })
-
+    
     test("Can update a Managers department", () => {
         jenna.addEmployeeManaged(preston);
         expect(jenna.getEmployeesManaged()).toEqual([preston]);
+    })
+
+    test("Can promote Manager", () => {
+        jenna.promote("Director of Software Engineering");
+        expect(jenna.position).toBe("Director of Software Engineering");
+        expect(jenna.getSalary).toBe(144000);
     })
 })
 
