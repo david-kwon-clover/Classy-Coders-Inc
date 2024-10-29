@@ -15,6 +15,12 @@ describe("Employee tests without static methods", () => {
         expect(preston.getSalary()).toBe(105000)
     })
 
+    test("Can handle errors for setting negative salary", () => {
+        expect(() => {
+            preston.setSalary(-1000)
+        }).toThrow("Salary cannot be negative");
+    })
+
     test("Can get current isHired status", () => {
         expect(preston.getStatus()).toBe(true);
     })
