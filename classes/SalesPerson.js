@@ -17,6 +17,16 @@ class SalesPerson extends Employee {
     makeSale(amount) {
         this.#totalSales += amount;
     }
+
+    findClient(client) {
+        if(!this.clients.includes(client)) {
+            throw new Error("Client not found");
+        }
+
+        return this.clients.find((clientName) => {
+            return clientName === client;
+        })
+    }
     
 }
 
