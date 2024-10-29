@@ -57,7 +57,7 @@ describe("Software Engineer Tests", () => {
     })
 
     test("Can update programmingLanguages", () => {
-        programmer.setProgrammingLanguages("C#"); 
+        programmer.setProgrammingLanguage("C#"); 
         expect(programmer.getProgrammingLanguages()).toEqual (["JavaScript", "Java", "Python", "C#"]);
     })
 })
