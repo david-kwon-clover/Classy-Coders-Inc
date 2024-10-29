@@ -85,6 +85,16 @@ describe("SalesPerson Tests", () => {
         malik.makeSale(20000);
         expect(malik.getSalesNumbers()).toBe(30500);
     })
+
+    test("Can find client with findClient", () => {
+        expect(malik.findClient("Vine")).toBe("Vine");
+    })
+
+    test("Can handle error if client cannot be found with findClient", () => {
+        expect(() => {
+            malik.findClient("Spotify")
+        }).toThrow("Client not found");
+    })
 })
 
 describe("Employee Static Properties and Methods Tests", () => {

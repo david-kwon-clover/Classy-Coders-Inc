@@ -7,6 +7,7 @@ class SalesPerson extends Employee {
     constructor(name, position, salary, clients) {
         super(name, position, salary);
         this.#totalSales = 0;
+        this.clients = clients;
     }
 
     getSalesNumbers() {
@@ -16,6 +17,7 @@ class SalesPerson extends Employee {
     makeSale(amount) {
         this.#totalSales += amount;
     }
+    
 }
 
 module.exports = {
