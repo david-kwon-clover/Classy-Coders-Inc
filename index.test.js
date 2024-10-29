@@ -71,13 +71,13 @@ describe("SalesPerson Tests", () => {
     })
 
     test("Can get totalSales with getSalesNumber", () => {
-        expect(malik.getSalesNumber()).toBe(0);
+        expect(malik.getSalesNumbers()).toBe(0);
     })
 
     test("Can update totalSales with makeSale", () => {
         malik.makeSale(10500);
         malik.makeSale(20000);
-        expect(malik.getSalesNumber()).toBe(30500);
+        expect(malik.getSalesNumbers()).toBe(30500);
     })
 })
 
